@@ -1,2 +1,3 @@
-# DSP_Proyect
-# DSP_Proyect
+Proyecto de DSP. 
+
+Ecualizador de Audio
