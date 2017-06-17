@@ -61,9 +61,9 @@ void dspSystem::updateVolume(int value){
  * Initialization function for the current filter plan
  */
 bool dspSystem::init(const int sampleRate,const int bufferSize) {
-  _debug("dspSystem::init()" << std::endl);                         //Comando para probar si está entrando a un proceso
+  _debug("dspSystem::init()" << std::endl);
 
-  sampleRate_ = sampleRate;                                         //Rango de muestras
+  sampleRate_ = sampleRate;
   bufferSize_ = bufferSize;
   volumeGain_ = 0;
 
@@ -79,8 +79,8 @@ bool dspSystem::init(const int sampleRate,const int bufferSize) {
  */
 bool dspSystem::process(float* in,float* out) {
 
-  float* tmpIn = in;                                        //Vector de Entrada
-  float* tmpOut = out;                                      //Vector de Salida
+  float* tmpIn = in;
+  float* tmpOut = out;
 
   cv_->filter(bufferSize_,volumeGain_,tmpIn,tmpOut);
 
