@@ -82,7 +82,7 @@ private:
       *DSP change
       */
      bool dspChanged_;
-     
+
    private slots:
      void on_fileEdit_returnPressed();
      void on_fileButton_clicked();
@@ -91,6 +91,7 @@ private:
 
      void update();
 
+     void on_volumef_valueChanged(int value_A);
 };
 
 

@@ -16,7 +16,7 @@
  * along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-/**
+/*
  * \file   controlVolume.cpp
  *         Implements control volumen in the time domain
  * \author Jose Miguel Barboza
@@ -50,7 +50,7 @@ controlVolume::~controlVolume(){
  * Init the filter operation
  */
 
-void controlVolume::filter(int blockSize, int volumeGain, float *in, float *out){
+void controlVolume::filter(int blockSize, int volumeGain, float *in, float *out){               //Este si es el controlador del volumen
     for (int n=0; n<blockSize;++n){
         out[n]=(volumeGain)*in[n]*0.02;
     }

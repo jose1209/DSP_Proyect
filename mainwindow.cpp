@@ -100,7 +100,7 @@ void MainWindow::update() {
 
         dspChanged_=false;
     }
-    
+
 }
 
 
@@ -112,6 +112,14 @@ void MainWindow::on_volumeSlider_valueChanged(int value){
     ;
 }
 
+void MainWindow::on_volumef_valueChanged(int value_A){
+    if (!dspChanged_){
+        dspChanged_=true;
+    }
+    dsp_->updateVolumen_Filtro_A(value_A);
+    ;
+
+}
 
 void MainWindow::on_fileButton_clicked() {
   selectedFiles_ =
@@ -140,3 +148,5 @@ void MainWindow::on_fileEdit_returnPressed() {
     jack::playAlso(tmp.c_str());
   }
 }
+
+

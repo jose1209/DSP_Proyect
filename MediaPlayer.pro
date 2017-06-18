@@ -21,13 +21,13 @@ SOURCES += main.cpp\
     jack.cpp \
     dspsystem.cpp \
     controlvolume.cpp \
-    filtroprueba.cpp
+    filtro_a.cpp
 
 HEADERS  += mainwindow.h \
             jack.h \
             processor.h \
             dspsystem.h \
     controlvolume.h \
-    filtroprueba.h
+    filtro_a.h
 
 FORMS    += mainwindow.ui
