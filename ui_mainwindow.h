@@ -1,7 +1,7 @@
 /********************************************************************************
 ** Form generated from reading UI file 'mainwindow.ui'
 **
-** Created by: Qt User Interface Compiler version 5.7.1
+** Created by: Qt User Interface Compiler version 5.8.0
 **
 ** WARNING! All changes made in this file will be lost when recompiling UI file!
 ********************************************************************************/
@@ -37,10 +37,10 @@ public:
     QHBoxLayout *horizontalLayout;
     QLineEdit *fileEdit;
     QToolButton *fileButton;
-    QWidget *horizontalLayoutWidget;
-    QHBoxLayout *VolumeLayout;
     QSlider *volumeSlider;
-    QLabel *volume;
+    QLabel *label;
+    QSlider *volumef;
+    QLabel *label_2;
     QMenuBar *menuBar;
     QToolBar *mainToolBar;
     QStatusBar *statusBar;
@@ -49,7 +49,7 @@ public:
     {
         if (MainWindow->objectName().isEmpty())
             MainWindow->setObjectName(QStringLiteral("MainWindow"));
-        MainWindow->resize(925, 398);
+        MainWindow->resize(925, 397);
         centralWidget = new QWidget(MainWindow);
         centralWidget->setObjectName(QStringLiteral("centralWidget"));
         verticalLayoutWidget = new QWidget(centralWidget);
@@ -76,25 +76,20 @@ public:
 
         verticalLayout->addLayout(horizontalLayout);
 
-        horizontalLayoutWidget = new QWidget(centralWidget);
-        horizontalLayoutWidget->setObjectName(QStringLiteral("horizontalLayoutWidget"));
-        horizontalLayoutWidget->setGeometry(QRect(10, 60, 51, 231));
-        VolumeLayout = new QHBoxLayout(horizontalLayoutWidget);
-        VolumeLayout->setSpacing(6);
-        VolumeLayout->setContentsMargins(11, 11, 11, 11);
-        VolumeLayout->setObjectName(QStringLiteral("VolumeLayout"));
-        VolumeLayout->setContentsMargins(0, 0, 0, 0);
-        volumeSlider = new QSlider(horizontalLayoutWidget);
+        volumeSlider = new QSlider(centralWidget);
         volumeSlider->setObjectName(QStringLiteral("volumeSlider"));
-        volumeSlider->setMaximum(50);
+        volumeSlider->setGeometry(QRect(60, 80, 21, 211));
         volumeSlider->setOrientation(Qt::Vertical);
-        volumeSlider->setTickPosition(QSlider::TicksBothSides);
-
-        VolumeLayout->addWidget(volumeSlider);
-
-        volume = new QLabel(centralWidget);
-        volume->setObjectName(QStringLiteral("volume"));
-        volume->setGeometry(QRect(10, 290, 67, 17));
+        label = new QLabel(centralWidget);
+        label->setObjectName(QStringLiteral("label"));
+        label->setGeometry(QRect(40, 300, 67, 17));
+        volumef = new QSlider(centralWidget);
+        volumef->setObjectName(QStringLiteral("volumef"));
+        volumef->setGeometry(QRect(220, 80, 21, 211));
+        volumef->setOrientation(Qt::Vertical);
+        label_2 = new QLabel(centralWidget);
+        label_2->setObjectName(QStringLiteral("label_2"));
+        label_2->setGeometry(QRect(200, 300, 71, 17));
         MainWindow->setCentralWidget(centralWidget);
         menuBar = new QMenuBar(MainWindow);
         menuBar->setObjectName(QStringLiteral("menuBar"));
@@ -116,7 +111,8 @@ public:
     {
         MainWindow->setWindowTitle(QApplication::translate("MainWindow", "MainWindow", Q_NULLPTR));
         fileButton->setText(QApplication::translate("MainWindow", "...", Q_NULLPTR));
-        volume->setText(QApplication::translate("MainWindow", "Volume", Q_NULLPTR));
+        label->setText(QApplication::translate("MainWindow", "Volumen", Q_NULLPTR));
+        label_2->setText(QApplication::translate("MainWindow", "Vol. Filtro", Q_NULLPTR));
     } // retranslateUi
 
 };

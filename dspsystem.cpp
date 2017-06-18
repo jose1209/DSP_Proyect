@@ -40,14 +40,18 @@
 
 
 dspSystem::dspSystem()
-  :sampleRate_(0),bufferSize_(0),cv_(0){
+  :sampleRate_(0),bufferSize_(0),cv_(0),cv_F_A(0){
 }
 
 dspSystem::~dspSystem() {
     delete cv_;
+    delete cv_F_A;
     cv_;
+    cv_F_A;
 }
 
+///////////////////////////////////////////////////////////////////////////
+/*Sube el volumen*/
 
 void dspSystem::updateVolume(int value){
    /*
@@ -56,6 +60,17 @@ void dspSystem::updateVolume(int value){
    volumeGain_=value;
 
 }
+
+/*Sube el Volumen del Filtro*/
+
+void dspSystem::updateVolumen_Filtro_A(int value_F_A){
+   /*
+    * Updating volume value
+    */
+   volumeGain_F_A=value_F_A;
+
+}
+/////////////////////////////////////////////////////////////////////////
 
 /**
  * Initialization function for the current filter plan
@@ -66,26 +81,29 @@ bool dspSystem::init(const int sampleRate,const int bufferSize) {
   sampleRate_ = sampleRate;
   bufferSize_ = bufferSize;
   volumeGain_ = 0;
+  volumeGain_F_A = 0;
 
-  delete cv_;
+  delete cv_,cv_F_A;
   cv_=new controlVolume();
+  cv_F_A=new filtroA();
 
   return true;
 }
-
 
 /**
  * Processing function
  */
 bool dspSystem::process(float* in,float* out) {
+    float* tmpIn = in;
+    float* tmpOut = out;
 
-  float* tmpIn = in;
-  float* tmpOut = out;
+    cv_->filter(bufferSize_,volumeGain_,tmpIn,tmpOut);
+   // cv_F_A->filterA(bufferSize_,volumeGain_F_A,tmpIn,tmpOut);
+    return true;
+  }
 
-  cv_->filter(bufferSize_,volumeGain_,tmpIn,tmpOut);
+////////////////////////////////////////////////////////
 
-  return true;
-}
 
 /**
  * Shutdown the processor

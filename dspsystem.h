@@ -30,6 +30,7 @@
 
 #include "processor.h"
 #include "controlvolume.h"
+#include "filtro_a.h"
 
 class dspSystem : public processor {
 public:
@@ -68,7 +69,11 @@ public:
    */
   virtual int setSampleRate(const int sampleRate);
 
+  //Actualiza el volumen
+
   void updateVolume(int value);
+
+  void updateVolumen_Filtro_A(int value_F_A);
 
 protected:
 
@@ -87,14 +92,16 @@ protected:
    */
 
   int volumeGain_;
+  int volumeGain_F_A;
 
 
   /**
    * control Volume
    */
   controlVolume* cv_;
+  filtroA* cv_F_A;
 
-  
+
 };
 
 
