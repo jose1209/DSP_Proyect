@@ -12,6 +12,7 @@ public:
     void filterA(int blockSize,
                  int volumeGain_filtroA,
                  float* in,
+                 float* inA,
                  float* out);
 
 };

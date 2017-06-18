@@ -95,10 +95,12 @@ bool dspSystem::init(const int sampleRate,const int bufferSize) {
  */
 bool dspSystem::process(float* in,float* out) {
     float* tmpIn = in;
-    float* tmpOut = out;
+    float tmpOut[2048];
+    float* tmpOut1 = out;
+    float* tmp = tmpOut;
 
     cv_->filter(bufferSize_,volumeGain_,tmpIn,tmpOut);
-   // cv_F_A->filterA(bufferSize_,volumeGain_F_A,tmpIn,tmpOut);
+    cv_F_A->filterA(bufferSize_,volumeGain_F_A,tmpIn,tmp,tmpOut1);
     return true;
   }
 
