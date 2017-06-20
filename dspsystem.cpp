@@ -44,10 +44,16 @@ dspSystem::dspSystem()
 }
 
 dspSystem::~dspSystem() {
-    delete cv_;
+
+
+
+
     delete cv_F_A;
+
+
     cv_;
     cv_F_A;
+
 }
 
 ///////////////////////////////////////////////////////////////////////////
@@ -86,7 +92,6 @@ bool dspSystem::init(const int sampleRate,const int bufferSize) {
   delete cv_,cv_F_A;
   cv_=new controlVolume();
   cv_F_A=new filtroA();
-
   return true;
 }
 
@@ -99,7 +104,14 @@ bool dspSystem::process(float* in,float* out) {
     float* tmpOut1 = out;
     float* tmp = tmpOut;
 
-    cv_->filter(bufferSize_,volumeGain_,tmpIn,tmpOut);
+
+
+    cv_->setCoefieciente(0.003611, -0.001881, -0.007068, 0, 0.007068, 0.001881, -0.003611, -5.208, 11.49, -13.77, 9.439, -3.515, 0.5553);
+    cv_->filter(bufferSize_, volumeGain_,tmpIn,tmpOut);
+
+
+    // cv_->filter(bufferSize_,volumeGain_,tmpIn,tmpOut);
+
     cv_F_A->filterA(bufferSize_,volumeGain_F_A,tmpIn,tmp,tmpOut1);
     return true;
   }
