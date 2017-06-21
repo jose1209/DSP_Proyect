@@ -38,45 +38,59 @@
 #define _debug(x)
 #endif
 
-
-dspSystem::dspSystem()
-  :sampleRate_(0),bufferSize_(0),cv_(0),cv_F_A(0){
+dspSystem::dspSystem():sampleRate_(0),bufferSize_(0),cv_(0),cvA_(0){
 }
 
 dspSystem::~dspSystem() {
-
-
-
-
-    delete cv_F_A;
-
-
+    delete cv_;
+    delete cvA_;
     cv_;
-    cv_F_A;
-
+    cvA_;
 }
 
-///////////////////////////////////////////////////////////////////////////
-/*Sube el volumen*/
-
+//////////////////////Actualiza los Sliders///////////////////////////////////////
 void dspSystem::updateVolume(int value){
-   /*
-    * Updating volume value
-    */
-   volumeGain_=value;
+   volumeGain_ = value;
+}
+void dspSystem::updateVolumeA(int value32Hz){
+   volumeGain32Hz_ = value32Hz;
+}
+void dspSystem::updateVolumeB(int value64Hz){
+   volumeGain64Hz_ = value64Hz;
+}
+void dspSystem::updateVolumeC(int value125Hz){
+   volumeGain125Hz_ = value125Hz;
 
 }
-
-/*Sube el Volumen del Filtro*/
-
-void dspSystem::updateVolumen_Filtro_A(int value_F_A){
-   /*
-    * Updating volume value
-    */
-   volumeGain_F_A=value_F_A;
+void dspSystem::updateVolumeD(int value250Hz){
+   volumeGain250Hz_ = value250Hz;
 
 }
-/////////////////////////////////////////////////////////////////////////
+void dspSystem::updateVolumeE(int value500Hz){
+    volumeGain_ = value500Hz;
+
+}
+void dspSystem::updateVolumeF(int value1kHz){
+    volumeGain1kHz_ = value1kHz;
+
+}
+void dspSystem::updateVolumeG(int value2kHz){
+    volumeGain2kHz_ = value2kHz;
+
+}
+void dspSystem::updateVolumeH(int value4kHz){
+    volumeGain4kHz_ = value4kHz;
+
+}
+void dspSystem::updateVolumeI(int value8kHz){
+    volumeGain8kHz_ = value8kHz;
+
+}
+void dspSystem::updateVolumeJ(int value16kHz){
+    volumeGain16kHz_ = value16kHz;
+
+}
+//////////////////////////////////////////////////////////////////////
 
 /**
  * Initialization function for the current filter plan
@@ -87,37 +101,58 @@ bool dspSystem::init(const int sampleRate,const int bufferSize) {
   sampleRate_ = sampleRate;
   bufferSize_ = bufferSize;
   volumeGain_ = 0;
-  volumeGain_F_A = 0;
+  volumeGain32Hz_ = 0;
+  volumeGain64Hz_ = 0;
+  volumeGain125Hz_ = 0;
+  volumeGain250Hz_ = 0;
+  volumeGain500Hz_ = 0;
+  volumeGain1kHz_ = 0;
+  volumeGain2kHz_ = 0;
+  volumeGain4kHz_ = 0;
+  volumeGain8kHz_ = 0;
+  volumeGain16kHz_ = 0;
 
-  delete cv_,cv_F_A;
-  cv_=new controlVolume();
-  cv_F_A=new filtroA();
+  delete cv_;
+  delete cvA_;
+  cv_ = new controlVolume();      //Volumen General
+  cvA_ = new filtro();           //Para el Filtro
+
   return true;
 }
+
+//////algunas constantes///////////
+
+float a0_32Hz_Etapa1 = 1;
+float a1_32Hz_Etapa1 = 0;
+float a2_32Hz_Etapa1 = -1;
+float b0_32Hz_Etapa1 = 1;
+float b1_32Hz_Etapa1 = -0.5346976901022821;
+float b2_32Hz_Etapa1 = 0.13236825268212946;
+float kA_32Hz_Etapa1 = 0.43381587365893526;
+
+////////////////////////////////////
 
 /**
  * Processing function
  */
 bool dspSystem::process(float* in,float* out) {
-    float* tmpIn = in;
-    float tmpOut[2048];
-    float* tmpOut1 = out;
-    float* tmp = tmpOut;
+
+  float* tmpIn = in;
+  float aux[1024];
+  float* tmp = aux;
+  float* tmpOut = out;
+
+///////////////////////////Aqui se arman los filtros//////////////////////////////////////////////
+
+  //cv_->filter(bufferSize_,volumeGain_,tmpIn,/*tmp,*/tmpOut);
+  cvA_->setCoefieciente(a0_32Hz_Etapa1, a1_32Hz_Etapa1, a2_32Hz_Etapa1, b0_32Hz_Etapa1, b1_32Hz_Etapa1, b2_32Hz_Etapa1, kA_32Hz_Etapa1);
+  cvA_->filter(bufferSize_,volumeGain32Hz_,tmpIn,tmpOut);
 
 
 
-    cv_->setCoefieciente(0.003611, -0.001881, -0.007068, 0, 0.007068, 0.001881, -0.003611, -5.208, 11.49, -13.77, 9.439, -3.515, 0.5553);
-    cv_->filter(bufferSize_, volumeGain_,tmpIn,tmpOut);
-
-
-    // cv_->filter(bufferSize_,volumeGain_,tmpIn,tmpOut);
-
-    cv_F_A->filterA(bufferSize_,volumeGain_F_A,tmpIn,tmp,tmpOut1);
-    return true;
-  }
-
-////////////////////////////////////////////////////////
-
+/////////////////////////////////////////////////////////////////////////////////////////////////
+  return true;
+}
 
 /**
  * Shutdown the processor

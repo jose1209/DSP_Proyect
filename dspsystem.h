@@ -30,7 +30,7 @@
 
 #include "processor.h"
 #include "controlvolume.h"
-#include "filtro_a.h"
+#include "filtro.h"
 
 class dspSystem : public processor {
 public:
@@ -45,7 +45,7 @@ public:
   ~dspSystem();
 
   /**
-   * Initialization function for the current filter plan
+   * Initialization function for the current filter plan#include "constantes_filtros.h"
    */
   virtual bool init(const int frameRate,const int bufferSize);
 
@@ -69,11 +69,17 @@ public:
    */
   virtual int setSampleRate(const int sampleRate);
 
-  //Actualiza el volumen
-
   void updateVolume(int value);
-
-  void updateVolumen_Filtro_A(int value_F_A);
+  void updateVolumeA(int value32Hz);
+  void updateVolumeB(int value64Hz);
+  void updateVolumeC(int value125Hz);
+  void updateVolumeD(int value250Hz);
+  void updateVolumeE(int value500Hz);
+  void updateVolumeF(int value1kHz);
+  void updateVolumeG(int value2kHz);
+  void updateVolumeH(int value4kHz);
+  void updateVolumeI(int value8kHz);
+  void updateVolumeJ(int value16kHz);
 
 protected:
 
@@ -92,14 +98,23 @@ protected:
    */
 
   int volumeGain_;
-  int volumeGain_F_A;
+  int volumeGain32Hz_;
+  int volumeGain64Hz_;
+  int volumeGain125Hz_;
+  int volumeGain250Hz_;
+  int volumeGain500Hz_;
+  int volumeGain1kHz_;
+  int volumeGain2kHz_;
+  int volumeGain4kHz_;
+  int volumeGain8kHz_;
+  int volumeGain16kHz_;
 
 
   /**
    * control Volume
    */
   controlVolume* cv_;
-  filtroA* cv_F_A;
+  filtro* cvA_;
 
 
 };

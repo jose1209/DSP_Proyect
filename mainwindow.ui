@@ -7,7 +7,7 @@
     <x>0</x>
     <y>0</y>
     <width>925</width>
-    <height>397</height>
+    <height>476</height>
    </rect>
   </property>
   <property name="windowTitle">
@@ -18,9 +18,9 @@
     <property name="geometry">
      <rect>
       <x>10</x>
-      <y>10</y>
+      <y>30</y>
       <width>901</width>
-      <height>51</height>
+      <height>74</height>
      </rect>
     </property>
     <layout class="QVBoxLayout" name="verticalLayout" stretch="0">
@@ -46,8 +46,8 @@
    <widget class="QSlider" name="volumeSlider">
     <property name="geometry">
      <rect>
-      <x>60</x>
-      <y>80</y>
+      <x>130</x>
+      <y>120</y>
       <width>21</width>
       <height>211</height>
      </rect>
@@ -59,8 +59,8 @@
    <widget class="QLabel" name="label">
     <property name="geometry">
      <rect>
-      <x>40</x>
-      <y>300</y>
+      <x>110</x>
+      <y>340</y>
       <width>67</width>
       <height>17</height>
      </rect>
@@ -69,31 +69,244 @@
      <string>Volumen</string>
     </property>
    </widget>
-   <widget class="QSlider" name="volumef">
+   <widget class="QWidget" name="layoutWidget">
     <property name="geometry">
      <rect>
-      <x>220</x>
-      <y>80</y>
-      <width>21</width>
-      <height>211</height>
+      <x>680</x>
+      <y>100</y>
+      <width>82</width>
+      <height>275</height>
      </rect>
     </property>
-    <property name="orientation">
-     <enum>Qt::Vertical</enum>
-    </property>
+    <layout class="QVBoxLayout" name="verticalLayout_2">
+     <item>
+      <widget class="QPushButton" name="Classical">
+       <property name="text">
+        <string>Classical</string>
+       </property>
+      </widget>
+     </item>
+     <item>
+      <widget class="QPushButton" name="Club">
+       <property name="text">
+        <string>Club</string>
+       </property>
+      </widget>
+     </item>
+     <item>
+      <widget class="QPushButton" name="Dance">
+       <property name="text">
+        <string>Dance</string>
+       </property>
+      </widget>
+     </item>
+     <item>
+      <widget class="QPushButton" name="BandT">
+       <property name="text">
+        <string>BandT</string>
+       </property>
+      </widget>
+     </item>
+     <item>
+      <widget class="QPushButton" name="FullTreble">
+       <property name="text">
+        <string>Full Treble</string>
+       </property>
+      </widget>
+     </item>
+     <item>
+      <widget class="QPushButton" name="Pop">
+       <property name="text">
+        <string>Pop</string>
+       </property>
+      </widget>
+     </item>
+     <item>
+      <widget class="QPushButton" name="Reggae">
+       <property name="text">
+        <string>Reggae</string>
+       </property>
+      </widget>
+     </item>
+     <item>
+      <widget class="QPushButton" name="Rock">
+       <property name="text">
+        <string>Rock</string>
+       </property>
+      </widget>
+     </item>
+     <item>
+      <widget class="QPushButton" name="Techno">
+       <property name="text">
+        <string>Techno</string>
+       </property>
+      </widget>
+     </item>
+    </layout>
    </widget>
-   <widget class="QLabel" name="label_2">
+   <widget class="QWidget" name="layoutWidget">
     <property name="geometry">
      <rect>
       <x>200</x>
-      <y>300</y>
-      <width>71</width>
-      <height>17</height>
+      <y>100</y>
+      <width>481</width>
+      <height>271</height>
      </rect>
     </property>
-    <property name="text">
-     <string>Vol. Filtro</string>
+    <layout class="QHBoxLayout" name="horizontalLayout_2">
+     <item>
+      <widget class="QSlider" name="volumef_1">
+       <property name="orientation">
+        <enum>Qt::Vertical</enum>
+       </property>
+      </widget>
+     </item>
+     <item>
+      <widget class="QSlider" name="volumef_2">
+       <property name="orientation">
+        <enum>Qt::Vertical</enum>
+       </property>
+      </widget>
+     </item>
+     <item>
+      <widget class="QSlider" name="volumef_3">
+       <property name="orientation">
+        <enum>Qt::Vertical</enum>
+       </property>
+      </widget>
+     </item>
+     <item>
+      <widget class="QSlider" name="volumef_4">
+       <property name="orientation">
+        <enum>Qt::Vertical</enum>
+       </property>
+      </widget>
+     </item>
+     <item>
+      <widget class="QSlider" name="volumef_5">
+       <property name="orientation">
+        <enum>Qt::Vertical</enum>
+       </property>
+      </widget>
+     </item>
+     <item>
+      <widget class="QSlider" name="volumef_6">
+       <property name="orientation">
+        <enum>Qt::Vertical</enum>
+       </property>
+      </widget>
+     </item>
+     <item>
+      <widget class="QSlider" name="volumef_7">
+       <property name="orientation">
+        <enum>Qt::Vertical</enum>
+       </property>
+      </widget>
+     </item>
+     <item>
+      <widget class="QSlider" name="volumef_8">
+       <property name="orientation">
+        <enum>Qt::Vertical</enum>
+       </property>
+      </widget>
+     </item>
+     <item>
+      <widget class="QSlider" name="volumef_9">
+       <property name="orientation">
+        <enum>Qt::Vertical</enum>
+       </property>
+      </widget>
+     </item>
+     <item>
+      <widget class="QSlider" name="volumef_10">
+       <property name="orientation">
+        <enum>Qt::Vertical</enum>
+       </property>
+      </widget>
+     </item>
+    </layout>
+   </widget>
+   <widget class="QWidget" name="layoutWidget">
+    <property name="geometry">
+     <rect>
+      <x>220</x>
+      <y>370</y>
+      <width>461</width>
+      <height>31</height>
+     </rect>
     </property>
+    <layout class="QHBoxLayout" name="horizontalLayout_3">
+     <item>
+      <widget class="QLabel" name="uno">
+       <property name="text">
+        <string>32</string>
+       </property>
+      </widget>
+     </item>
+     <item>
+      <widget class="QLabel" name="dos">
+       <property name="text">
+        <string>64</string>
+       </property>
+      </widget>
+     </item>
+     <item>
+      <widget class="QLabel" name="tres">
+       <property name="text">
+        <string>125</string>
+       </property>
+      </widget>
+     </item>
+     <item>
+      <widget class="QLabel" name="cuatro">
+       <property name="text">
+        <string>250</string>
+       </property>
+      </widget>
+     </item>
+     <item>
+      <widget class="QLabel" name="cinco">
+       <property name="text">
+        <string>500</string>
+       </property>
+      </widget>
+     </item>
+     <item>
+      <widget class="QLabel" name="seis">
+       <property name="text">
+        <string>1k</string>
+       </property>
+      </widget>
+     </item>
+     <item>
+      <widget class="QLabel" name="siete">
+       <property name="text">
+        <string>2k</string>
+       </property>
+      </widget>
+     </item>
+     <item>
+      <widget class="QLabel" name="ocho">
+       <property name="text">
+        <string>4k</string>
+       </property>
+      </widget>
+     </item>
+     <item>
+      <widget class="QLabel" name="nueve">
+       <property name="text">
+        <string>8k</string>
+       </property>
+      </widget>
+     </item>
+     <item>
+      <widget class="QLabel" name="diez">
+       <property name="text">
+        <string>16k</string>
+       </property>
+      </widget>
+     </item>
+    </layout>
    </widget>
   </widget>
   <widget class="QMenuBar" name="menuBar">
@@ -102,7 +315,7 @@
      <x>0</x>
      <y>0</y>
      <width>925</width>
-     <height>22</height>
+     <height>19</height>
     </rect>
    </property>
   </widget>

@@ -30,11 +30,8 @@
 #include <cstdio>
 #include <cstdlib>
 #include <cmath>
-
 #include <iostream>
-
 #include <unistd.h>
-
 #include <QMessageBox>
 
 #undef _DSP_DEBUG
@@ -45,7 +42,6 @@
 #else
 #define _debug(x)
 #endif
-
 
 /**
  * Constructor
@@ -72,14 +68,12 @@ void jack::fileThread::exitRequest() {
   exitRq_ = true;
 }
 
-
 /**
  * Run method
  *
  * Is executed in a second thread
  */
 void jack::fileThread::run() {
-
   _debug("fileThread::run() called\n");
 
   while(!exitRq_) {
@@ -92,9 +86,7 @@ void jack::fileThread::run() {
     }
     usleep(jack::sleepTime_);
     jack::cleanGarbage();
-
   }
-
 }
 
 /*
@@ -109,7 +101,6 @@ void jack::fileThread::run() {
  * matically removed by the secondary thread.
  */
 jack::garbage_type jack::garbage_;
-
 
 /*
  * Size of the window being played
@@ -257,7 +248,6 @@ void jack::close() {
   delete[] fileBuffer_;
   fileBuffer_=0;
   fileBufferSize_=0;
-
 }
 
 void jack::init(processor* proc) {
@@ -406,7 +396,6 @@ void jack::init(processor* proc) {
     std::cerr << "cannot connect output ports" << std::endl;
   }
 #endif
-
 
   free(ports);
 }

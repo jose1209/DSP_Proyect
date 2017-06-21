@@ -24,14 +24,10 @@
  *
  * $Id: equalizer.cpp $
  */
-
-
 #include "mainwindow.h"
 #include "ui_mainwindow.h"
 #include "jack.h"
 #include <string>
-
-
 #undef _DSP_DEBUG
 #define _DSP_DEBUG
 
@@ -42,12 +38,10 @@
 #define _debug(x)
 #endif
 
-
 /**
  * Precision used by trimming
  */
 const float MainWindow::Epsilon = 0.001;
-
 
 MainWindow::MainWindow(QWidget *parent) :
     QMainWindow(parent),
@@ -82,12 +76,9 @@ MainWindow::MainWindow(QWidget *parent) :
       }
       ++it;
     }
-
 }
 
-
-MainWindow::~MainWindow()
-{
+MainWindow::~MainWindow() {
     jack::close();
     delete timer_;
     delete ui;
@@ -97,30 +88,102 @@ MainWindow::~MainWindow()
 void MainWindow::update() {
     if(dspChanged_){
         _debug("Updating" << std::endl);
-
         dspChanged_=false;
     }
-
 }
 
+//Slider del Volumen General
 
 void MainWindow::on_volumeSlider_valueChanged(int value){
     if (!dspChanged_){
         dspChanged_=true;
     }
     dsp_->updateVolume(value);
-    ;
 }
 
-void MainWindow::on_volumef_valueChanged(int value_A){
+//////////////////////Sliders Filtros/////////////////////////////////////////
+
+void MainWindow::on_volumef_1_valueChanged(int value32Hz){
     if (!dspChanged_){
         dspChanged_=true;
     }
-    dsp_->updateVolumen_Filtro_A(value_A);
-    ;
+    dsp_->updateVolumeA(value32Hz);
+}
+
+void MainWindow::on_volumef_2_valueChanged(int value64Hz){
+    if (!dspChanged_){
+        dspChanged_=true;
+    }
+    dsp_->updateVolumeB(value64Hz);
+}
+
+void MainWindow::on_volumef_3_valueChanged(int value125Hz){
+    if (!dspChanged_){
+        dspChanged_=true;
+    }
+    dsp_->updateVolumeC(value125Hz);
 
 }
 
+void MainWindow::on_volumef_4_valueChanged(int value250Hz){
+    if (!dspChanged_){
+        dspChanged_=true;
+    }
+    dsp_->updateVolumeD(value250Hz);
+
+}
+
+void MainWindow::on_volumef_5_valueChanged(int value500Hz){
+    if (!dspChanged_){
+        dspChanged_=true;
+    }
+    dsp_->updateVolumeE(value500Hz);
+
+}
+
+void MainWindow::on_volumef_6_valueChanged(int value1kHz){
+    if (!dspChanged_){
+        dspChanged_=true;
+    }
+    dsp_->updateVolumeF(value1kHz);
+
+}
+
+void MainWindow::on_volumef_7_valueChanged(int value2kHz){
+    if (!dspChanged_){
+        dspChanged_=true;
+    }
+    dsp_->updateVolumeG(value2kHz);
+
+}
+
+void MainWindow::on_volumef_8_valueChanged(int value4kHz){
+    if (!dspChanged_){
+        dspChanged_=true;
+    }
+    dsp_->updateVolumeH(value4kHz);
+
+}
+
+void MainWindow::on_volumef_9_valueChanged(int value8kHz){
+    if (!dspChanged_){
+        dspChanged_=true;
+    }
+    dsp_->updateVolumeI(value8kHz);
+
+}
+
+void MainWindow::on_volumef_10_valueChanged(int value16kHz){
+    if (!dspChanged_){
+        dspChanged_=true;
+    }
+    dsp_->updateVolumeJ(value16kHz);
+
+}
+
+///////////////////////////////////////////////////////////////////////////////
+
+//Botones
 void MainWindow::on_fileButton_clicked() {
   selectedFiles_ =
       QFileDialog::getOpenFileNames(this,
@@ -140,7 +203,6 @@ void MainWindow::on_fileButton_clicked() {
   }
 }
 
-
 void MainWindow::on_fileEdit_returnPressed() {
   jack::stopFiles();
   std::string tmp(qPrintable(ui->fileEdit->text()));
@@ -148,5 +210,132 @@ void MainWindow::on_fileEdit_returnPressed() {
     jack::playAlso(tmp.c_str());
   }
 }
+
+//Valores Predefinidos
+
+void MainWindow::on_Classical_clicked() {
+    ui->volumef_1->setValue(10);
+    ui->volumef_2->setValue(20);
+    ui->volumef_3->setValue(60);
+    ui->volumef_4->setValue(40);
+    ui->volumef_5->setValue(50);
+    ui->volumef_6->setValue(60);
+    ui->volumef_7->setValue(70);
+    ui->volumef_8->setValue(80);
+    ui->volumef_9->setValue(60);
+    ui->volumef_10->setValue(50);
+}
+
+void MainWindow::on_Club_clicked() {
+    ui->volumef_1->setValue(10);
+    ui->volumef_2->setValue(50);
+    ui->volumef_3->setValue(30);
+    ui->volumef_4->setValue(40);
+    ui->volumef_5->setValue(50);
+    ui->volumef_6->setValue(60);
+    ui->volumef_7->setValue(70);
+    ui->volumef_8->setValue(50);
+    ui->volumef_9->setValue(90);
+    ui->volumef_10->setValue(50);
+}
+
+void MainWindow::on_Dance_clicked() {
+    ui->volumef_1->setValue(20);
+    ui->volumef_2->setValue(20);
+    ui->volumef_3->setValue(30);
+    ui->volumef_4->setValue(40);
+    ui->volumef_5->setValue(50);
+    ui->volumef_6->setValue(60);
+    ui->volumef_7->setValue(70);
+    ui->volumef_8->setValue(80);
+    ui->volumef_9->setValue(20);
+    ui->volumef_10->setValue(50);
+}
+
+void MainWindow::on_BandT_clicked() {
+    ui->volumef_1->setValue(10);
+    ui->volumef_2->setValue(20);
+    ui->volumef_3->setValue(90);
+    ui->volumef_4->setValue(40);
+    ui->volumef_5->setValue(90);
+    ui->volumef_6->setValue(60);
+    ui->volumef_7->setValue(70);
+    ui->volumef_8->setValue(80);
+    ui->volumef_9->setValue(90);
+    ui->volumef_10->setValue(50);
+}
+
+void MainWindow::on_FullTreble_clicked() {
+    ui->volumef_1->setValue(10);
+    ui->volumef_2->setValue(20);
+    ui->volumef_3->setValue(30);
+    ui->volumef_4->setValue(40);
+    ui->volumef_5->setValue(10);
+    ui->volumef_6->setValue(60);
+    ui->volumef_7->setValue(70);
+    ui->volumef_8->setValue(10);
+    ui->volumef_9->setValue(90);
+    ui->volumef_10->setValue(50);
+}
+
+void MainWindow::on_Pop_clicked() {
+    ui->volumef_1->setValue(30);
+    ui->volumef_2->setValue(20);
+    ui->volumef_3->setValue(30);
+    ui->volumef_4->setValue(40);
+    ui->volumef_5->setValue(30);
+    ui->volumef_6->setValue(60);
+    ui->volumef_7->setValue(70);
+    ui->volumef_8->setValue(30);
+    ui->volumef_9->setValue(90);
+    ui->volumef_10->setValue(50);
+}
+
+void MainWindow::on_Reggae_clicked() {
+    ui->volumef_1->setValue(40);
+    ui->volumef_2->setValue(20);
+    ui->volumef_3->setValue(30);
+    ui->volumef_4->setValue(40);
+    ui->volumef_5->setValue(40);
+    ui->volumef_6->setValue(60);
+    ui->volumef_7->setValue(70);
+    ui->volumef_8->setValue(80);
+    ui->volumef_9->setValue(40);
+    ui->volumef_10->setValue(50);
+}
+
+void MainWindow::on_Rock_clicked() {
+    ui->volumef_1->setValue(60);
+    ui->volumef_2->setValue(20);
+    ui->volumef_3->setValue(60);
+    ui->volumef_4->setValue(40);
+    ui->volumef_5->setValue(50);
+    ui->volumef_6->setValue(60);
+    ui->volumef_7->setValue(70);
+    ui->volumef_8->setValue(80);
+    ui->volumef_9->setValue(60);
+    ui->volumef_10->setValue(50);
+}
+
+void MainWindow::on_Techno_clicked() {
+    ui->volumef_1->setValue(70);
+    ui->volumef_2->setValue(20);
+    ui->volumef_3->setValue(30);
+    ui->volumef_4->setValue(70);
+    ui->volumef_5->setValue(50);
+    ui->volumef_6->setValue(60);
+    ui->volumef_7->setValue(70);
+    ui->volumef_8->setValue(80);
+    ui->volumef_9->setValue(70);
+    ui->volumef_10->setValue(50);
+}
+
+
+
+
+
+
+
+
 
 

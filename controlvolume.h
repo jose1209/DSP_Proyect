@@ -41,15 +41,6 @@
  */
 
 class controlVolume {
-
-protected:
-    float y_n_menos_1, y_n_menos_2, y_n_menos_3, y_n_menos_4, y_n_menos_5, y_n_menos_6;
-    float a1, a2, a3, a4, a5, a6;
-    float x_n_menos_1, x_n_menos_2, x_n_menos_3, x_n_menos_4, x_n_menos_5, x_n_menos_6;
-    float b0, b1, b2, b3, b4, b5, b6;
-
-
-
 public:
     /**
      * Constructor
@@ -64,50 +55,12 @@ public:
    /**
     * Filter the in buffer and leave the result in out
     */
-
-
-
-
-    void filter(int blockSize,
-                int volumeGain,
-                float* in,
-                float* out);
-    /*void inicializar ();*/
-    void setCoefieciente(float _a1,
-                         float _a2,
-                         float _a3,
-                         float _a4,
-                         float _a5,
-                         float _a6,
-                         float _b0,
-                         float _b1,
-                         float _b2,
-                         float _b3,
-                         float _b4,
-                         float _b5,
-                         float _b6 );
+   void filter(int blockSize,
+               int volumeGain,
+               float* in,
+               //float* inA,
+               float* out);
 };
 
 
-
 #endif // CONTROLVOLUME_H
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-

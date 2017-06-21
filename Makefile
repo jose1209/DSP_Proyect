@@ -52,12 +52,14 @@ SOURCES       = main.cpp \
 		mainwindow.cpp \
 		jack.cpp \
 		dspsystem.cpp \
-		controlvolume.cpp moc_mainwindow.cpp
+		controlvolume.cpp \
+		filtro.cpp moc_mainwindow.cpp
 OBJECTS       = main.o \
 		mainwindow.o \
 		jack.o \
 		dspsystem.o \
 		controlvolume.o \
+		filtro.o \
 		moc_mainwindow.o
 DIST          = ../../Qt/5.8/gcc_64/mkspecs/features/spec_pre.prf \
 		../../Qt/5.8/gcc_64/mkspecs/common/unix.conf \
@@ -233,11 +235,13 @@ DIST          = ../../Qt/5.8/gcc_64/mkspecs/features/spec_pre.prf \
 		jack.h \
 		processor.h \
 		dspsystem.h \
-		controlvolume.h main.cpp \
+		controlvolume.h \
+		filtro.h main.cpp \
 		mainwindow.cpp \
 		jack.cpp \
 		dspsystem.cpp \
-		controlvolume.cpp
+		controlvolume.cpp \
+		filtro.cpp
 QMAKE_TARGET  = MediaPlayer
 DESTDIR       = 
 TARGET        = MediaPlayer
@@ -613,8 +617,8 @@ distdir: FORCE
 	@test -d $(DISTDIR) || mkdir -p $(DISTDIR)
 	$(COPY_FILE) --parents $(DIST) $(DISTDIR)/
 	$(COPY_FILE) --parents ../../Qt/5.8/gcc_64/mkspecs/features/data/dummy.cpp $(DISTDIR)/
-	$(COPY_FILE) --parents mainwindow.h jack.h processor.h dspsystem.h controlvolume.h $(DISTDIR)/
-	$(COPY_FILE) --parents main.cpp mainwindow.cpp jack.cpp dspsystem.cpp controlvolume.cpp $(DISTDIR)/
+	$(COPY_FILE) --parents mainwindow.h jack.h processor.h dspsystem.h controlvolume.h filtro.h $(DISTDIR)/
+	$(COPY_FILE) --parents main.cpp mainwindow.cpp jack.cpp dspsystem.cpp controlvolume.cpp filtro.cpp $(DISTDIR)/
 	$(COPY_FILE) --parents mainwindow.ui $(DISTDIR)/
 
 
@@ -1077,14 +1081,20 @@ mainwindow.o: mainwindow.cpp mainwindow.h \
 		../../Qt/5.8/gcc_64/include/QtWidgets/QMenuBar \
 		../../Qt/5.8/gcc_64/include/QtWidgets/qmenubar.h \
 		../../Qt/5.8/gcc_64/include/QtWidgets/qmenu.h \
+		../../Qt/5.8/gcc_64/include/QtWidgets/QPushButton \
+		../../Qt/5.8/gcc_64/include/QtWidgets/qpushbutton.h \
+		../../Qt/5.8/gcc_64/include/QtWidgets/qabstractbutton.h \
 		../../Qt/5.8/gcc_64/include/QtWidgets/QSlider \
 		../../Qt/5.8/gcc_64/include/QtWidgets/QStatusBar \
 		../../Qt/5.8/gcc_64/include/QtWidgets/qstatusbar.h \
+		../../Qt/5.8/gcc_64/include/QtWidgets/QTextBrowser \
+		../../Qt/5.8/gcc_64/include/QtWidgets/qtextbrowser.h \
+		../../Qt/5.8/gcc_64/include/QtWidgets/qtextedit.h \
+		../../Qt/5.8/gcc_64/include/QtGui/qtextdocument.h \
 		../../Qt/5.8/gcc_64/include/QtWidgets/QToolBar \
 		../../Qt/5.8/gcc_64/include/QtWidgets/qtoolbar.h \
 		../../Qt/5.8/gcc_64/include/QtWidgets/QToolButton \
 		../../Qt/5.8/gcc_64/include/QtWidgets/qtoolbutton.h \
-		../../Qt/5.8/gcc_64/include/QtWidgets/qabstractbutton.h \
 		../../Qt/5.8/gcc_64/include/QtWidgets/QVBoxLayout \
 		../../Qt/5.8/gcc_64/include/QtWidgets/QWidget \
 		jack.h \
@@ -1210,6 +1220,9 @@ dspsystem.o: dspsystem.cpp dspsystem.h \
 
 controlvolume.o: controlvolume.cpp controlvolume.h
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o controlvolume.o controlvolume.cpp
+
+filtro.o: filtro.cpp filtro.h
+	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o filtro.o filtro.cpp
 
 moc_mainwindow.o: moc_mainwindow.cpp 
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o moc_mainwindow.o moc_mainwindow.cpp

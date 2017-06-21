@@ -31,7 +31,6 @@
 #include <QMainWindow>
 #include <QTimer>
 #include <QFileDialog>
-
 #include "dspsystem.h"
 
 namespace Ui {
@@ -91,7 +90,25 @@ private:
 
      void update();
 
-     void on_volumef_valueChanged(int value_A);
+     void on_Classical_clicked();
+     void on_Club_clicked();
+     void on_volumef_1_valueChanged(int value32Hz);
+     void on_Dance_clicked();
+     void on_FullTreble_clicked();
+     void on_BandT_clicked();
+     void on_Pop_clicked();
+     void on_Reggae_clicked();
+     void on_Rock_clicked();
+     void on_Techno_clicked();
+     void on_volumef_2_valueChanged(int value);
+     void on_volumef_3_valueChanged(int value);
+     void on_volumef_4_valueChanged(int value);
+     void on_volumef_5_valueChanged(int value);
+     void on_volumef_6_valueChanged(int value);
+     void on_volumef_7_valueChanged(int value);
+     void on_volumef_8_valueChanged(int value);
+     void on_volumef_9_valueChanged(int value);
+     void on_volumef_10_valueChanged(int value);
 };
 
 
