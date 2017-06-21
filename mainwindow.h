@@ -1,30 +1,3 @@
-/*
- * DSP Example is part of the DSP Lecture at TEC-Costa Rica
- * Copyright (C) 2010  Pablo Alvarado
- *
- * This program is free software: you can redistribute it and/or modify
- * it under the terms of the GNU General Public License as published by
- * the Free Software Foundation, either version 3 of the License, or
- * (at your option) any later version.
- *
- * This program is distributed in the hope that it will be useful,
- * but WITHOUT ANY WARRANTY; without even the implied warranty of
- * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
- * GNU General Public License for more details.
- *
- * You should have received a copy of the GNU General Public License
- * along with this program.  If not, see <http://www.gnu.org/licenses/>.
- */
-
-/**
- * \file   mainwindow.h
- *         Implements the equalizer H(w) computation
- * \author Pablo Alvarado/Jose Miguel Barboza
- * \date   2010.12.12/2017.05.26
- *
- * $Id: mainwindow.h $
- */
-
 #ifndef MAINWINDOW_H
 #define MAINWINDOW_H
 
@@ -83,12 +56,11 @@ private:
      bool dspChanged_;
 
    private slots:
-     void on_fileEdit_returnPressed();
-     void on_fileButton_clicked();
-     void on_volumeSlider_valueChanged(int value);
-
-
      void update();
+     void on_toolButton_clicked();
+     void on_lineEdit_returnPressed();
+     /*
+
 
      void on_Classical_clicked();
      void on_Club_clicked();
@@ -100,18 +72,37 @@ private:
      void on_Reggae_clicked();
      void on_Rock_clicked();
      void on_Techno_clicked();
-     void on_volumef_2_valueChanged(int value);
-     void on_volumef_3_valueChanged(int value);
-     void on_volumef_4_valueChanged(int value);
-     void on_volumef_5_valueChanged(int value);
-     void on_volumef_6_valueChanged(int value);
-     void on_volumef_7_valueChanged(int value);
-     void on_volumef_8_valueChanged(int value);
-     void on_volumef_9_valueChanged(int value);
-     void on_volumef_10_valueChanged(int value);
+*/
+     void on_verticalSlider_valueChanged(int value);
+     void on_verticalSlider_2_valueChanged(int value32Hz);
+     void on_verticalSlider_3_valueChanged(int value64Hz);
+     void on_verticalSlider_4_valueChanged(int value125Hz);
+     void on_verticalSlider_5_valueChanged(int value250Hz);
+     void on_verticalSlider_6_valueChanged(int value500Hz);
+     void on_verticalSlider_7_valueChanged(int value1kHz);
+     void on_verticalSlider_8_valueChanged(int value2kHz);
+     void on_verticalSlider_9_valueChanged(int value4kHz);
+     void on_verticalSlider_10_valueChanged(int value8kHz);
+     void on_verticalSlider_11_valueChanged(int value16kHz);
+     void on_pushButton_clicked();
+     void on_pushButton_2_clicked();
+     void on_pushButton_3_clicked();
+     void on_pushButton_4_clicked();
+     void on_pushButton_5_clicked();
+     void on_pushButton_6_clicked();
+     void on_pushButton_7_clicked();
+     void on_pushButton_8_clicked();
+     void on_pushButton_9_clicked();
+     /*void on_progressBar_valueChanged(int value);
+     void on_progressBar_2_valueChanged(int value);
+     void on_progressBar_3_valueChanged(int value);
+     void on_progressBar_4_valueChanged(int value);
+     void on_progressBar_5_valueChanged(int value);
+     void on_progressBar_6_valueChanged(int value);
+     void on_progressBar_7_valueChanged(int value);
+     void on_progressBar_8_valueChanged(int value);
+     void on_progressBar_9_valueChanged(int value);
+     void on_progressBar_10_valueChanged(int value);*/
 };
-
-
-
 
 #endif // MAINWINDOW_H

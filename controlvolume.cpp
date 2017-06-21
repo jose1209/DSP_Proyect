@@ -48,9 +48,9 @@ controlVolume::~controlVolume(){
  * Init the filter operation
  */
 
-void controlVolume::filter(int blockSize, int volumeGain, float *in, /*float *inA,*/ float *out){
+void controlVolume::filter(int blockSize, int volumeGain, float *in, float *inA,float *out){
     for (int n=0; n<blockSize;++n){
-        out[n]=(volumeGain)*(in[n]/*+inA[n]*/)*0.02;
+        out[n]=(volumeGain)*(in[n]+inA[n])*0.02;
     }
 
 }
