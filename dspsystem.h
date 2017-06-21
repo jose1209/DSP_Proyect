@@ -69,6 +69,8 @@ public:
    */
   virtual int setSampleRate(const int sampleRate);
 
+
+
   void updateVolume(int value);
   void updateVolumeA(int value32Hz);
   void updateVolumeB(int value64Hz);
@@ -82,7 +84,7 @@ public:
   void updateVolumeJ(int value16kHz);
 
 protected:
-
+float fourier(int bufferSize,double* pfout);
   /**
    * Sample rate
    */
@@ -108,6 +110,7 @@ protected:
   int volumeGain4kHz_;
   int volumeGain8kHz_;
   int volumeGain16kHz_;
+
 
 
   /**

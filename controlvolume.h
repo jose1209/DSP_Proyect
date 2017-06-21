@@ -58,7 +58,7 @@ public:
    void filter(int blockSize,
                int volumeGain,
                float* in,
-               //float* inA,
+               float* inA,
                float* out);
 };
 
